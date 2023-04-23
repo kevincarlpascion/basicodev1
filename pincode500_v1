@@ -1,0 +1,35 @@
+import random
+import time
+
+print("Good day, User! Thank you for using this Code!")
+
+while True:
+    time.sleep(2)
+    n = input("How many digits do you want in your pin code? (Minimum 4, Maximum 500): ")
+    if n.isdigit() and 4 <= int(n) <= 500:
+        n = int(n)
+        break
+    else:
+        print("ERROR! Invalid Input.")
+        continue
+
+while True:
+    pin = [random.randint(0, 9) for i in range(n)]
+    if any(str(i)*2 in ''.join(map(str, pin)) for i in range(10)):
+        continue
+    else:
+        print("Your pin code is: " + ''.join(map(str, pin)))
+        reset = input("Do you want to reset? (Y/N): ")
+        if reset.lower() == 'y':
+            while True:
+                time.sleep(2)
+                n = input("How many digits do you want in your pin code? (Minimum 4, Maximum 500): ")
+                if n.isdigit() and 4 <= int(n) <= 500:
+                    n = int(n)
+                    break
+                else:
+                    print("ERROR! Invalid Input.")
+                    continue
+        else:
+            print("Thank you for using our program!")
+            break
