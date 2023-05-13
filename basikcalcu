@@ -1,0 +1,110 @@
+import math
+
+def add(a, b):
+    return a + b
+
+def subtract(a, b):
+    return a - b
+
+def multiply(a, b):
+    return a * b
+
+def divide(a, b):
+    return a / b
+
+def sin(angle, radians=False):
+    if radians:
+        return math.sin(angle)
+    else:
+        return math.sin(math.radians(angle))
+
+def cos(angle, radians=False):
+    if radians:
+        return math.cos(angle)
+    else:
+        return math.cos(math.radians(angle))
+
+def tan(angle, radians=False):
+    if radians:
+        return math.tan(angle)
+    else:
+        return math.tan(math.radians(angle))
+
+def factorial(n):
+    if n == 0:
+        return 1
+    else:
+        return n * factorial(n - 1)
+
+def permutation(n, r):
+    return factorial(n) / factorial(n - r)
+
+def combination(n, r):
+    return permutation(n, r) / factorial(r)
+
+print("Welcome to the calculator program!")
+
+while True:
+    print("\nPlease select an operation:")
+    print("1. Add")
+    print("2. Subtract")
+    print("3. Multiply")
+    print("4. Divide")
+    print("5. Sin")
+    print("6. Cos")
+    print("7. Tan")
+    print("8. Factorial")
+    print("9. Permutation")
+    print("10. Combination")
+    print("0. Exit")
+
+    choice = input("Enter your choice: ")
+
+    if choice == "0":
+        print("Thank you for using the calculator program!")
+        break
+
+    elif choice in ["1", "2", "3", "4"]:
+        num1 = float(input("Enter the first number: "))
+        num2 = float(input("Enter the second number: "))
+
+        if choice == "1":
+            print(f"{num1} + {num2} = {add(num1, num2)}")
+
+        elif choice == "2":
+            print(f"{num1} - {num2} = {subtract(num1, num2)}")
+
+        elif choice == "3":
+            print(f"{num1} * {num2} = {multiply(num1, num2)}")
+
+        elif choice == "4":
+            print(f"{num1} / {num2} = {divide(num1, num2)}")
+
+    elif choice in ["5", "6", "7"]:
+        angle = float(input("Enter the angle in degrees: "))
+        radians = input("Would you like to use radians instead of degrees? (Y/N) ").upper() == "Y"
+
+        if choice == "5":
+            print(f"Sin({angle}) = {sin(angle, radians)}")
+
+        elif choice == "6":
+            print(f"Cos({angle}) = {cos(angle, radians)}")
+
+        elif choice == "7":
+            print(f"Tan({angle}) = {tan(angle, radians)}")
+
+    elif choice == "8":
+        n = int(input("Enter a positive integer: "))
+        print(f"{n}! = {factorial(n)}")
+
+    elif choice == "9":
+        n = int(input("Enter the total number of items: "))
+        r = int(input("Enter the number of items to select: "))
+        print(f"{n}P{r} = {permutation(n, r)}")
+
+    elif choice == "10":
+        n = int(input("Enter the total number of items: "))
+        r = int(input("Enter the number of items to select: "))
+        print(f"{n}C{r} = {combination(n, r)}")
+
+   
